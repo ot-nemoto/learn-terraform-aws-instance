@@ -23,8 +23,10 @@ terraform init
 terraform fmt
 ```
 
--   拡張機能に `esbenp.prettier-vscode`, `hashicorp.terraform` 設定済み
--   settings.json に `terraform`, `terraform-vars` の設定済み
+_vscode_
+
+-   [拡張機能](.devcontainer/devcontainer.json)に `esbenp.prettier-vscode`, `hashicorp.terraform` 設定済み
+-   [settings.json](.vscode/settings.json) に `terraform`, `terraform-vars` の設定済み
 
 **構成を検証**
 
