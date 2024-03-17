@@ -11,37 +11,40 @@ export AWS_SECRET_ACCESS_KEY=
 
 ## コマンド
 
-ディレクトリを初期化
+**ディレクトリを初期化**
 
 ```sh
 terraform init
 ```
 
-構成をフォーマット
+**構成をフォーマット**
 
 ```sh
 terraform fmt
 ```
 
-構成を検証
+-   拡張機能に `esbenp.prettier-vscode`, `hashicorp.terraform` 設定済み
+-   settings.json に `terraform`, `terraform-vars` の設定済み
+
+**構成を検証**
 
 ```sh
 terraform validate
 ```
 
-インフラストラクチャの作成
+**インフラストラクチャの作成**
 
 ```sh
 terraform apply
 ```
 
-状態の確認
+**状態の確認**
 
 ```sh
 terraform show
 ```
 
-リソース一覧
+**リソース一覧**
 
 ```sh
 terraform state list
