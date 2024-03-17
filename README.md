@@ -40,6 +40,12 @@ terraform validate
 terraform apply
 ```
 
+変数のオーバーライド
+
+```sh
+terraform apply -var "instance_name=YetAnotherName"
+```
+
 **状態の確認**
 
 ```sh
@@ -50,4 +56,10 @@ terraform show
 
 ```sh
 terraform state list
+```
+
+**インフラストラクチャの削除**
+
+```sh
+terraform destroy
 ```
