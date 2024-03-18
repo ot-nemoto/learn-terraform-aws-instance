@@ -34,6 +34,12 @@ _vscode_
 terraform validate
 ```
 
+### インフラストラクチャの更新内容確認
+
+```sh
+terraform plan
+```
+
 ### インフラストラクチャの作成
 
 ```sh
@@ -58,14 +64,14 @@ terraform show
 terraform state list
 ```
 
-### インフラストラクチャの削除
-
-```sh
-terraform destroy
-```
-
 ### 出力値を表示
 
 ```sh
 terraform output
+```
+
+### インフラストラクチャの削除
+
+```sh
+terraform destroy
 ```
