@@ -23,7 +23,9 @@ resource "aws_instance" "app_server" {
   }
 }
 
-# Instance Profile
+################################################################################
+# Connect via Systems Manager
+################################################################################
 resource "aws_iam_instance_profile" "profile" {
   role = aws_iam_role.role.name
 }
