@@ -75,3 +75,38 @@ terraform output
 ```sh
 terraform destroy
 ```
+
+## バリデーション
+
+Amazon EC2 インスタンスが AWS Systems Manager の管理対象になっているか確認する
+
+```sh
+aws ssm start-automation-execution \
+  --document-name "AWSSupport-TroubleshootManagedInstance" \
+  --parameters '{"InstanceId":["i-052aed696b43c7e49"]}'
+  # {
+  #     "AutomationExecutionId": "8779d17e-0f0c-41a3-b3d7-feddaed8643c"
+  # }
+```
+
+```sh
+aws ssm get-automation-execution \
+  --automation-execution-id "8779d17e-0f0c-41a3-b3d7-feddaed8643c" \
+  --query 'AutomationExecution.StepExecutions[].{StepName: StepName,StepStatus: StepStatus}' \
+  --output table
+  # ---------------------------------------------------
+  # |             GetAutomationExecution              |
+  # +----------------------------------+--------------+
+  # |             StepName             | StepStatus   |
+  # +----------------------------------+--------------+
+  # |  GetPingStatus                   |  Success     |
+  # |  BranchOnIsInstanceAlreadyOnline |  Success     |
+  # |  FinalOutput                     |  Success     |
+  # |  GetEC2InstanceProperties        |  Pending     |
+  # |  CheckVpcEndpoint                |  Pending     |
+  # |  CheckRouteTable                 |  Pending     |
+  # |  CheckNacl                       |  Pending     |
+  # |  CheckInstanceSecurityGroup      |  Pending     |
+  # |  CheckInstanceIAM                |  Pending     |
+  # +----------------------------------+--------------+
+```
