@@ -92,21 +92,7 @@ aws ssm start-automation-execution \
 ```sh
 aws ssm get-automation-execution \
   --automation-execution-id "8779d17e-0f0c-41a3-b3d7-feddaed8643c" \
-  --query 'AutomationExecution.StepExecutions[].{StepName: StepName,StepStatus: StepStatus}' \
-  --output table
-  # ---------------------------------------------------
-  # |             GetAutomationExecution              |
-  # +----------------------------------+--------------+
-  # |             StepName             | StepStatus   |
-  # +----------------------------------+--------------+
-  # |  GetPingStatus                   |  Success     |
-  # |  BranchOnIsInstanceAlreadyOnline |  Success     |
-  # |  FinalOutput                     |  Success     |
-  # |  GetEC2InstanceProperties        |  Pending     |
-  # |  CheckVpcEndpoint                |  Pending     |
-  # |  CheckRouteTable                 |  Pending     |
-  # |  CheckNacl                       |  Pending     |
-  # |  CheckInstanceSecurityGroup      |  Pending     |
-  # |  CheckInstanceIAM                |  Pending     |
-  # +----------------------------------+--------------+
+  --query 'AutomationExecution.StepExecutions[?StepName==`FinalOutput` && StepStatus==`Success`].Outputs.Message' \
+  --output text
+  # EC2 instance is managed by Systems Manager.
 ```
